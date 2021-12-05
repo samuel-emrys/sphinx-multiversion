@@ -1,0 +1,56 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Setup environment
+        shell: bash
+        run: |
+          sudo apt update -qq
+          sudo apt install -y texlive latexmk texlive-latex-extra
+          python -m pip install --upgrade pip
+          pip install wheel setuptools virtualenv
+          virtualenv venv
+          source venv/bin/activate
+          pip install .
+          deactivate
+
+      - name: Build documentation
+        shell: bash
+        run: |
+          mkdir public
+          source venv/bin/activate
+          sphinx-multiversion docs/ public/
+          deactivate
+          cat >public/index.html << EOF
+          <!DOCTYPE html>
+            <html>
+              <head>
+                <title>Redirecting to master branch</title>
+                <meta charset="utf-8">
+                <meta http-equiv="refresh" content="0; url=./master/index.html">
+                <link rel="canonical" href="https://samuel-emrys.github.io/sphinx-multiversion/master/index.html">
+              </head>
+            </html>
+          EOF
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+

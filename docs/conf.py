@@ -41,3 +41,4 @@ html_sidebars = {
 
 smv_remote_whitelist = r"^origin$"
 smv_branch_whitelist = r"^master$"
+smv_tag_whitelist = r"^v\d+\.\d+\.\d+$"  # all tags like "v1.0.0"
