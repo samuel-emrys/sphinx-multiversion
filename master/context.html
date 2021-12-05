@@ -4,15 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>HTML Context &#8212; sphinx-multiversion 0.2.4 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Hosting on GitHub Pages" href="github_pages.html" />
@@ -33,49 +33,49 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="html-context">
+  <section id="html-context">
 <span id="context"></span><h1>HTML Context<a class="headerlink" href="#html-context" title="Permalink to this headline">¶</a></h1>
 <p>The following variables and functions are exposed to the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/config.html?highlight=context#confval-html_context">Sphinx HTML builder context</a> in all versions.</p>
-<div class="section" id="version-objects">
+<section id="version-objects">
 <h2><code class="docutils literal notranslate"><span class="pre">Version</span></code> Objects<a class="headerlink" href="#version-objects" title="Permalink to this headline">¶</a></h2>
 <p>All versions will be exposed to the HTML context as <code class="docutils literal notranslate"><span class="pre">Version</span></code> objects with the following attributes:</p>
 <dl class="py attribute">
-<dt id="name">
-<code class="sig-name descname">name</code><a class="headerlink" href="#name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The branch or tag name.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="url">
-<code class="sig-name descname">url</code><a class="headerlink" href="#url" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="url">
+<span class="sig-name descname"><span class="pre">url</span></span><a class="headerlink" href="#url" title="Permalink to this definition">¶</a></dt>
 <dd><p>The URL to the current page in this version.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="version">
-<code class="sig-name descname">version</code><a class="headerlink" href="#version" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="version">
+<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#version" title="Permalink to this definition">¶</a></dt>
 <dd><p>The value of the <code class="docutils literal notranslate"><span class="pre">version</span></code> variable in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="release">
-<code class="sig-name descname">release</code><a class="headerlink" href="#release" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="release">
+<span class="sig-name descname"><span class="pre">release</span></span><a class="headerlink" href="#release" title="Permalink to this definition">¶</a></dt>
 <dd><p>The value of the <code class="docutils literal notranslate"><span class="pre">release</span></code> variable in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="is_released">
-<code class="sig-name descname">is_released</code><a class="headerlink" href="#is_released" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="is_released">
+<span class="sig-name descname"><span class="pre">is_released</span></span><a class="headerlink" href="#is_released" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this version matches the <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">configured</span></a> <code class="docutils literal notranslate"><span class="pre">smv_released_pattern</span></code> regular expression, else <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="versions">
+</section>
+<section id="versions">
 <h2>Versions<a class="headerlink" href="#versions" title="Permalink to this headline">¶</a></h2>
 <p>The most important variable is <code class="docutils literal notranslate"><span class="pre">versions</span></code>, which can be used to iterate over all found (and whitelisted) versions.</p>
 <dl class="py attribute">
-<dt id="id0">
-<code class="sig-name descname">versions</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">versions</span></span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
 <dd><p>An iterable that yields all <code class="docutils literal notranslate"><span class="pre">Version</span></code> objects.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;Versions&lt;/h3&gt;</span>
 <span class="x">&lt;ul&gt;</span>
@@ -88,8 +88,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="versions.branches">
-<code class="sig-prename descclassname">versions.</code><code class="sig-name descname">branches</code><a class="headerlink" href="#versions.branches" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="versions.branches">
+<span class="sig-prename descclassname"><span class="pre">versions.</span></span><span class="sig-name descname"><span class="pre">branches</span></span><a class="headerlink" href="#versions.branches" title="Permalink to this definition">¶</a></dt>
 <dd><p>You can use the <code class="docutils literal notranslate"><span class="pre">branches</span></code> property of the <code class="docutils literal notranslate"><span class="pre">versions</span></code> iterable to get the <code class="docutils literal notranslate"><span class="pre">Version</span></code> objects for all branches.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;Branches&lt;/h3&gt;</span>
 <span class="x">&lt;ul&gt;</span>
@@ -102,8 +102,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="versions.tags">
-<code class="sig-prename descclassname">versions.</code><code class="sig-name descname">tags</code><a class="headerlink" href="#versions.tags" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="versions.tags">
+<span class="sig-prename descclassname"><span class="pre">versions.</span></span><span class="sig-name descname"><span class="pre">tags</span></span><a class="headerlink" href="#versions.tags" title="Permalink to this definition">¶</a></dt>
 <dd><p>You can use the <code class="docutils literal notranslate"><span class="pre">tags</span></code> property of the <code class="docutils literal notranslate"><span class="pre">versions</span></code> iterable to get the <code class="docutils literal notranslate"><span class="pre">Version</span></code> objects for all tags.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;Tags&lt;/h3&gt;</span>
 <span class="x">&lt;ul&gt;</span>
@@ -116,8 +116,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="versions.releases">
-<code class="sig-prename descclassname">versions.</code><code class="sig-name descname">releases</code><a class="headerlink" href="#versions.releases" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="versions.releases">
+<span class="sig-prename descclassname"><span class="pre">versions.</span></span><span class="sig-name descname"><span class="pre">releases</span></span><a class="headerlink" href="#versions.releases" title="Permalink to this definition">¶</a></dt>
 <dd><p>You can use the <code class="docutils literal notranslate"><span class="pre">releases</span></code> property of the <code class="docutils literal notranslate"><span class="pre">versions</span></code> iterable to get all <code class="docutils literal notranslate"><span class="pre">Version</span></code> objects where the <code class="docutils literal notranslate"><span class="pre">ìs_released</span></code> attribute is <code class="docutils literal notranslate"><span class="pre">True</span></code>.
 This is determined by the <code class="docutils literal notranslate"><span class="pre">smv_released_pattern</span></code> in the <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuration</span></a>.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;Releases&lt;/h3&gt;</span>
@@ -131,8 +131,8 @@ This is determined by the <code class="docutils literal notranslate"><span class
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="versions.in_development">
-<code class="sig-prename descclassname">versions.</code><code class="sig-name descname">in_development</code><a class="headerlink" href="#versions.in_development" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="versions.in_development">
+<span class="sig-prename descclassname"><span class="pre">versions.</span></span><span class="sig-name descname"><span class="pre">in_development</span></span><a class="headerlink" href="#versions.in_development" title="Permalink to this definition">¶</a></dt>
 <dd><p>You can use the <code class="docutils literal notranslate"><span class="pre">in_development</span></code> property of the <code class="docutils literal notranslate"><span class="pre">versions</span></code> iterable to get all <code class="docutils literal notranslate"><span class="pre">Version</span></code> objects where the <code class="docutils literal notranslate"><span class="pre">ìs_released</span></code> attribute is <code class="docutils literal notranslate"><span class="pre">False</span></code>.
 This is determined by the <code class="docutils literal notranslate"><span class="pre">smv_released_pattern</span></code> in the <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuration</span></a>.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;In Development&lt;/h3&gt;</span>
@@ -145,13 +145,13 @@ This is determined by the <code class="docutils literal notranslate"><span class
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <p>Similar to Sphinx’s <a class="reference external" href="http://www.sphinx-doc.org/en/stable/templating.html#hasdoc">hasdoc()</a> function.</p>
 <dl class="py function">
-<dt id="vhasdoc">
-<code class="sig-name descname">vhasdoc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_version</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vhasdoc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vhasdoc">
+<span class="sig-name descname"><span class="pre">vhasdoc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vhasdoc" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is Similar to Sphinx’s <a class="reference external" href="http://www.sphinx-doc.org/en/stable/templating.html#hasdoc">hasdoc()</a> function.
 It takes <code class="docutils literal notranslate"><span class="pre">other_version</span></code> as string and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the current document exists in another version.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">vhasdoc</span><span class="o">(</span><span class="s1">&#39;master&#39;</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
@@ -162,8 +162,8 @@ It takes <code class="docutils literal notranslate"><span class="pre">other_vers
 </dd></dl>
 
 <dl class="py function">
-<dt id="vpathto">
-<code class="sig-name descname">vpathto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_version</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vpathto" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vpathto">
+<span class="sig-name descname"><span class="pre">vpathto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vpathto" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is Similar to Sphinx’s <a class="reference external" href="http://www.sphinx-doc.org/en/stable/templating.html#pathto">pathto()</a> function.
 It takes <code class="docutils literal notranslate"><span class="pre">other_version</span></code> as string and returns the relative URL to the current page in the other version.
 If the current page does not exist in that version, the relative URL to its <a class="reference external" href="http://www.sphinx-doc.org/en/stable/config.html?highlight=context#confval-master_doc">master_doc</a> is returned instead.</p>
@@ -176,12 +176,12 @@ If the current page does not exist in that version, the relative URL to its <a c
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="other-variables">
+</section>
+<section id="other-variables">
 <h2>Other Variables<a class="headerlink" href="#other-variables" title="Permalink to this headline">¶</a></h2>
 <dl class="py attribute">
-<dt id="current_version">
-<code class="sig-name descname">current_version</code><a class="headerlink" href="#current_version" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="current_version">
+<span class="sig-name descname"><span class="pre">current_version</span></span><a class="headerlink" href="#current_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>A <code class="docutils literal notranslate"><span class="pre">Version</span></code> object for of the current version being built.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;Current Version: </span><span class="cp">{{</span> <span class="nv">current_version.name</span> <span class="cp">}}</span><span class="x">&lt;/h3&gt;</span>
 </pre></div>
@@ -189,16 +189,16 @@ If the current page does not exist in that version, the relative URL to its <a c
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="latest_version">
-<code class="sig-name descname">latest_version</code><a class="headerlink" href="#latest_version" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="latest_version">
+<span class="sig-name descname"><span class="pre">latest_version</span></span><a class="headerlink" href="#latest_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>A <code class="docutils literal notranslate"><span class="pre">Version</span></code> object of the latest released version being built.</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;Latest Version: </span><span class="cp">{{</span> <span class="nv">latest_version.name</span> <span class="cp">}}</span><span class="x">&lt;/h3&gt;</span>
 </pre></div>
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -251,7 +251,7 @@ If the current page does not exist in that version, the relative URL to its <a c
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">General</span></p>
+<p class="caption" role="heading"><span class="caption-text">General</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
@@ -265,9 +265,10 @@ If the current page does not exist in that version, the relative URL to its <a c
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Appendix</span></p>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="github_pages.html">Hosting on GitHub Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitlab_pages.html">Hosting on GitLab Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -285,7 +286,7 @@ If the current page does not exist in that version, the relative URL to its <a c
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -297,12 +298,6 @@ If the current page does not exist in that version, the relative URL to its <a c
 </ul>
 <h3>Tags</h3>
 <ul>
-  <li><a href="../v0.1.1/context.html">v0.1.1</a></li>
-  <li><a href="../v0.2.0/context.html">v0.2.0</a></li>
-  <li><a href="../v0.2.1/context.html">v0.2.1</a></li>
-  <li><a href="../v0.2.2/context.html">v0.2.2</a></li>
-  <li><a href="../v0.2.3/context.html">v0.2.3</a></li>
-  <li><a href="../v0.2.4/context.html">v0.2.4</a></li>
 </ul>
 
         </div>
@@ -310,10 +305,10 @@ If the current page does not exist in that version, the relative URL to its <a c
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2020, Jan Holthuis.
+      &copy;2021, Jan Holthuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
