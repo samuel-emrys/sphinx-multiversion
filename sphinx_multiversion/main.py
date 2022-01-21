@@ -12,6 +12,7 @@ import string
 import subprocess
 import sys
 import tempfile
+import shutil
 
 from sphinx import config as sphinx_config
 from sphinx import project as sphinx_project
@@ -68,7 +69,15 @@ def load_sphinx_config_worker(q, confpath, confoverrides, add_defaults):
             )
             current_config.add("smv_prefer_remote_refs", False, "html", bool)
             current_config.add("smv_prebuild_command", "", "html", str)
+            current_config.add("smv_prebuild_export_pattern", "", "html", str)
+            current_config.add(
+                "smv_prebuild_export_destination", "", "html", str
+            )
             current_config.add("smv_postbuild_command", "", "html", str)
+            current_config.add("smv_postbuild_export_pattern", "", "html", str)
+            current_config.add(
+                "smv_postbuild_export_destination", "", "html", str
+            )
         current_config.pre_init_values()
         current_config.init_values()
     except Exception as err:
@@ -122,6 +131,46 @@ def get_python_flags():
             yield from ("-X", "{}={}".format(option, value))
 
 
+def find_matching_files_and_dirs(pattern: str, root_dir: str) -> set:
+    logger = logging.getLogger(__name__)
+    logger.debug(f"Export pattern: {pattern}")
+    regex = re.compile(pattern)
+    matches = set()
+    for root, dirs, files in os.walk(root_dir):
+        for directory in dirs:
+            directory_result = regex.match(directory)
+            if directory_result:
+                matches.add(os.path.join(root, directory))
+        for file in files:
+            file_result = regex.match(file)
+            if file_result:
+                matches.add(os.path.join(root, file))
+    logger.debug(f"Pattern matches: {matches}")
+
+    return matches
+
+
+def export_to_destination(items: set, destination: str) -> None:
+    logger = logging.getLogger(__name__)
+    os.makedirs(destination, exist_ok=True)
+    for item in items:
+        # Copy file to desination
+        if os.path.isfile(item):
+            logger.debug(
+                "Copying {} to {}".format(
+                    item, os.path.join(destination, os.path.basename(item))
+                )
+            )
+            shutil.copy(
+                item, os.path.join(destination, os.path.basename(item))
+            )
+
+        # Copy directory to desination
+        elif os.path.isdir(item):
+            logger.debug(f"Copying {item} to {destination}")
+            shutil.copytree(item, destination, dirs_exist_ok=True)
+
+
 def main(argv=None):
     if not argv:
         argv = sys.argv[1:]
@@ -162,11 +211,28 @@ def main(argv=None):
         action="store_true",
         help="dump generated metadata and exit",
     )
+    parser.add_argument(
+        "--logger",
+        dest="log_state",
+        default="",
+        help="choose a logger. Valid values are stream or file",
+    )
     args, argv = parser.parse_known_args(argv)
     if args.noconfig:
         return 1
 
+    # Configure the logger
     logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    logFormatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
+    if args.log_state == "stream":
+        handler = logging.StreamHandler()
+        handler.setFormatter(logFormatter)
+        logger.addHandler(handler)
+    elif args.log_state == "file":
+        handler = logging.FileHandler(f"{__name__}.log", "w")
+        handler.setFormatter(logFormatter)
+        logger.addHandler(handler)
 
     sourcedir_absolute = os.path.abspath(args.sourcedir)
     confdir_absolute = (
@@ -219,8 +285,6 @@ def main(argv=None):
         gitrefs = sorted(gitrefs, key=lambda x: (not x.is_remote, *x))
     else:
         gitrefs = sorted(gitrefs, key=lambda x: (x.is_remote, *x))
-
-    logger = logging.getLogger(__name__)
 
     with tempfile.TemporaryDirectory() as tmp:
         # Generate Metadata
@@ -340,6 +404,17 @@ def main(argv=None):
                     config.smv_prebuild_command, cwd=current_cwd, shell=True
                 )
 
+                if config.smv_prebuild_export_pattern != "":
+
+                    matches = find_matching_files_and_dirs(
+                        config.smv_prebuild_export_pattern, current_cwd
+                    )
+                    export_dst = os.path.join(
+                        data["outputdir"],
+                        config.smv_prebuild_export_destination,
+                    )
+                    export_to_destination(matches, export_dst)
+
             logger.debug("Running sphinx-build with args: %r", current_argv)
             cmd = (
                 sys.executable,
@@ -370,5 +445,14 @@ def main(argv=None):
                 subprocess.check_call(
                     config.smv_postbuild_command, cwd=current_cwd, shell=True
                 )
+                if config.smv_postbuild_export_pattern != "":
+                    matches = find_matching_files_and_dirs(
+                        config.smv_postbuild_export_pattern, current_cwd
+                    )
+                    export_dst = os.path.join(
+                        data["outputdir"],
+                        config.smv_postbuild_export_destination,
+                    )
+                    export_to_destination(matches, export_dst)
 
     return 0
