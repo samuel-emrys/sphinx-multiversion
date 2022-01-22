@@ -29,6 +29,15 @@ This is what the default configuration looks like:
     # Determines whether remote or local git branches/tags are preferred if their output dirs conflict
     smv_prefer_remote_refs = False
 
+    # Run a command before invoking sphinx-build
+    smv_prebuild_command = 'doxygen'
+
+    # Regular expression of files and directories to export to outputdir after running smv_prebuild_command
+    smv_prebuild_export_pattern = 'doxygen$'
+
+    # Export files and directories matching smv_prebuild_export_pattern to this subdirectory of outputdir
+    smv_prebuild_export_destination = 'doxygen'
+
     # Specify build targets and whether the resulting artefacts should be downloadable
     smv_build_targets = {
         "HTML" : {
@@ -99,11 +108,34 @@ Pre and post-build command
 
 In some cases it may be necessary to run a command in the checked out directory before or after building with sphinx. For example if you are using ``sphinx-apidoc`` to generate the autodoc api source files.
 
-The options ``smv_prebuild_command`` and ``smv_postbuild_command`` are provided.
+The options ``smv_prebuild_command`` and ``smv_postbuild_command`` are provided to facilitate this, along with the ``smv_prebuild_export_pattern`` and ``smv_prebuild_export_directory`` options to allow you to optionally select which files resulting from these commands should be moved to the output directory, should it be required. Equivalents for these commands are also available in the postbuild case.
 
 For example:
 
-    smv_prebuild_command = "sphinx-apidoc -o docs/api mymodule"
+.. code-block:: python
+
+   # Run sphinx-apidoc prior to invoking sphinx-build, and place the output in the docs/api directory
+   smv_prebuild_command = "sphinx-apidoc -o docs/api mymodule"
+
+.. code-block:: python
+
+   # Run doxgen prior to running sphinx-build
+   smv_prebuild_command = "doxygen"
+   # Find the path to the directory titled 'doxygen'
+   smv_prebuild_export_pattern = 'doxygen$'
+   # Copy the doxygen build directory to the output directory
+   smv_prebuild_export_destination = 'doxygen'
+
+.. code-block:: python
+
+   # Make the doxygen generated latex files into pdfs
+   # NOTE: This directory would need to exist on all whitelisted branches and tags.
+   # More complex logic may be required in your individual use case.
+   smv_postbuild_command = "cd doxygen/latex && make"
+   # Find all files matching the pattern *.pdf
+   smv_postbuild_export_pattern = '.*.pdf'
+   # Export the matching files to the artefacts directory
+   smv_postbuild_export_destination = 'artefacts'
 
 Output Directory Format
 =======================
