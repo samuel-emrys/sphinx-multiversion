@@ -80,23 +80,23 @@ Just add a <code class="file docutils literal notranslate"><span class="pre">ind
 <h2>Automating documentation builds with Travis CI<a class="headerlink" href="#automating-documentation-builds-with-travis-ci" title="Permalink to this headline">¶</a></h2>
 <p>You can also automate versioned builds using Travis CI.
 To do that, add this to your <code class="file docutils literal notranslate"><span class="pre">.travis.yml</span></code> file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">script</span><span class="p">:</span>
-  <span class="c1"># Build documentation</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mkdir html</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sphinx-multiversion docs/ html/</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">script</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Build documentation</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir html</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sphinx-multiversion docs/ html/</span><span class="w"></span>
 
-<span class="nt">before_deploy</span><span class="p">:</span>
-  <span class="c1"># Add .nojekyll file and redirect from docroot to the sphinx output dir</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">touch html/.nojekyll</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cp assets/gh-pages-redirect.html html/index.html</span>
+<span class="nt">before_deploy</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Add .nojekyll file and redirect from docroot to the sphinx output dir</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">touch html/.nojekyll</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp assets/gh-pages-redirect.html html/index.html</span><span class="w"></span>
 
-<span class="nt">deploy</span><span class="p">:</span>
-  <span class="c1"># Only deploy the sphinx output dir as gh-pages branch</span>
-<span class="p p-Indicator">-</span> <span class="nt">provider</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pages</span>
-  <span class="nt">skip_cleanup</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span>
-  <span class="nt">keep_history</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">local_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">html</span>
+<span class="nt">deploy</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Only deploy the sphinx output dir as gh-pages branch</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pages</span><span class="w"></span>
+<span class="w">  </span><span class="nt">skip_cleanup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span><span class="w"></span>
+<span class="w">  </span><span class="nt">keep_history</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">local_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">html</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -205,10 +205,10 @@ To do that, add this to your <code class="file docutils literal notranslate"><sp
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Jan Holthuis.
+      &copy;2022, Jan Holthuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

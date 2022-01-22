@@ -56,6 +56,15 @@ As usual, you can also override certain options by using <code class="docutils l
 <span class="c1"># Determines whether remote or local git branches/tags are preferred if their output dirs conflict</span>
 <span class="n">smv_prefer_remote_refs</span> <span class="o">=</span> <span class="kc">False</span>
 
+<span class="c1"># Run a command before invoking sphinx-build</span>
+<span class="n">smv_prebuild_command</span> <span class="o">=</span> <span class="s1">&#39;doxygen&#39;</span>
+
+<span class="c1"># Regular expression of files and directories to export to outputdir after running smv_prebuild_command</span>
+<span class="n">smv_prebuild_export_pattern</span> <span class="o">=</span> <span class="s1">&#39;doxygen$&#39;</span>
+
+<span class="c1"># Export files and directories matching smv_prebuild_export_pattern to this subdirectory of outputdir</span>
+<span class="n">smv_prebuild_export_destination</span> <span class="o">=</span> <span class="s1">&#39;doxygen&#39;</span>
+
 <span class="c1"># Specify build targets and whether the resulting artefacts should be downloadable</span>
 <span class="n">smv_build_targets</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;HTML&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -116,11 +125,30 @@ To allow more flexibility, the regex is evaluated over the full refname.</p>
 <section id="pre-and-post-build-command">
 <h2>Pre and post-build command<a class="headerlink" href="#pre-and-post-build-command" title="Permalink to this headline">¶</a></h2>
 <p>In some cases it may be necessary to run a command in the checked out directory before or after building with sphinx. For example if you are using <code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span></code> to generate the autodoc api source files.</p>
-<p>The options <code class="docutils literal notranslate"><span class="pre">smv_prebuild_command</span></code> and <code class="docutils literal notranslate"><span class="pre">smv_postbuild_command</span></code> are provided.</p>
+<p>The options <code class="docutils literal notranslate"><span class="pre">smv_prebuild_command</span></code> and <code class="docutils literal notranslate"><span class="pre">smv_postbuild_command</span></code> are provided to facilitate this, along with the <code class="docutils literal notranslate"><span class="pre">smv_prebuild_export_pattern</span></code> and <code class="docutils literal notranslate"><span class="pre">smv_prebuild_export_directory</span></code> options to allow you to optionally select which files resulting from these commands should be moved to the output directory, should it be required. Equivalents for these commands are also available in the postbuild case.</p>
 <p>For example:</p>
-<blockquote>
-<div><p>smv_prebuild_command = “sphinx-apidoc -o docs/api mymodule”</p>
-</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run sphinx-apidoc prior to invoking sphinx-build, and place the output in the docs/api directory</span>
+<span class="n">smv_prebuild_command</span> <span class="o">=</span> <span class="s2">&quot;sphinx-apidoc -o docs/api mymodule&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run doxgen prior to running sphinx-build</span>
+<span class="n">smv_prebuild_command</span> <span class="o">=</span> <span class="s2">&quot;doxygen&quot;</span>
+<span class="c1"># Find the path to the directory titled &#39;doxygen&#39;</span>
+<span class="n">smv_prebuild_export_pattern</span> <span class="o">=</span> <span class="s1">&#39;doxygen$&#39;</span>
+<span class="c1"># Copy the doxygen build directory to the output directory</span>
+<span class="n">smv_prebuild_export_destination</span> <span class="o">=</span> <span class="s1">&#39;doxygen&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the doxygen generated latex files into pdfs</span>
+<span class="c1"># NOTE: This directory would need to exist on all whitelisted branches and tags.</span>
+<span class="c1"># More complex logic may be required in your individual use case.</span>
+<span class="n">smv_postbuild_command</span> <span class="o">=</span> <span class="s2">&quot;cd doxygen/latex &amp;&amp; make&quot;</span>
+<span class="c1"># Find all files matching the pattern *.pdf</span>
+<span class="n">smv_postbuild_export_pattern</span> <span class="o">=</span> <span class="s1">&#39;.*.pdf&#39;</span>
+<span class="c1"># Export the matching files to the artefacts directory</span>
+<span class="n">smv_postbuild_export_destination</span> <span class="o">=</span> <span class="s1">&#39;artefacts&#39;</span>
+</pre></div>
+</div>
 </section>
 <section id="output-directory-format">
 <h2>Output Directory Format<a class="headerlink" href="#output-directory-format" title="Permalink to this headline">¶</a></h2>
@@ -410,10 +438,10 @@ The <code class="docutils literal notranslate"><span class="pre">smv_outputdir_f
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Jan Holthuis.
+      &copy;2022, Jan Holthuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
