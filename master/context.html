@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>HTML Context &#8212; sphinx-multiversion 0.2.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,7 +12,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Hosting on GitHub Pages" href="github_pages.html" />
@@ -34,10 +36,10 @@
           <div class="body" role="main">
             
   <section id="html-context">
-<span id="context"></span><h1>HTML Context<a class="headerlink" href="#html-context" title="Permalink to this headline">¶</a></h1>
+<span id="context"></span><h1>HTML Context<a class="headerlink" href="#html-context" title="Permalink to this heading">¶</a></h1>
 <p>The following variables and functions are exposed to the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/config.html?highlight=context#confval-html_context">Sphinx HTML builder context</a> in all versions.</p>
 <section id="version-objects">
-<h2><code class="docutils literal notranslate"><span class="pre">Version</span></code> Objects<a class="headerlink" href="#version-objects" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Version</span></code> Objects<a class="headerlink" href="#version-objects" title="Permalink to this heading">¶</a></h2>
 <p>All versions will be exposed to the HTML context as <code class="docutils literal notranslate"><span class="pre">Version</span></code> objects with the following attributes:</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="name">
@@ -71,7 +73,7 @@
 
 </section>
 <section id="versions">
-<h2>Versions<a class="headerlink" href="#versions" title="Permalink to this headline">¶</a></h2>
+<h2>Versions<a class="headerlink" href="#versions" title="Permalink to this heading">¶</a></h2>
 <p>The most important variable is <code class="docutils literal notranslate"><span class="pre">versions</span></code>, which can be used to iterate over all found (and whitelisted) versions.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id0">
@@ -147,7 +149,7 @@ This is determined by the <code class="docutils literal notranslate"><span class
 
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
 <p>Similar to Sphinx’s <a class="reference external" href="http://www.sphinx-doc.org/en/stable/templating.html#hasdoc">hasdoc()</a> function.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vhasdoc">
@@ -178,7 +180,7 @@ If the current page does not exist in that version, the relative URL to its <a c
 
 </section>
 <section id="other-variables">
-<h2>Other Variables<a class="headerlink" href="#other-variables" title="Permalink to this headline">¶</a></h2>
+<h2>Other Variables<a class="headerlink" href="#other-variables" title="Permalink to this heading">¶</a></h2>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="current_version">
 <span class="sig-name descname"><span class="pre">current_version</span></span><a class="headerlink" href="#current_version" title="Permalink to this definition">¶</a></dt>
@@ -258,10 +260,28 @@ If the current page does not exist in that version, the relative URL to its <a c
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">HTML Context</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#version-objects"><code class="docutils literal notranslate"><span class="pre">Version</span></code> Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#versions">Versions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#other-variables">Other Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-objects"><code class="docutils literal notranslate"><span class="pre">Version</span></code> Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#name"><code class="docutils literal notranslate"><span class="pre">name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#url"><code class="docutils literal notranslate"><span class="pre">url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version"><code class="docutils literal notranslate"><span class="pre">version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release"><code class="docutils literal notranslate"><span class="pre">release</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#is_released"><code class="docutils literal notranslate"><span class="pre">is_released</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#versions">Versions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">versions</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vhasdoc"><code class="docutils literal notranslate"><span class="pre">vhasdoc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vpathto"><code class="docutils literal notranslate"><span class="pre">vpathto()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-variables">Other Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#current_version"><code class="docutils literal notranslate"><span class="pre">current_version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#latest_version"><code class="docutils literal notranslate"><span class="pre">latest_version</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -291,7 +311,7 @@ If the current page does not exist in that version, the relative URL to its <a c
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Branches</h3>
 <ul>
   <li><a href="context.html">master</a></li>
@@ -308,7 +328,7 @@ If the current page does not exist in that version, the relative URL to its <a c
       &copy;2022, Jan Holthuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

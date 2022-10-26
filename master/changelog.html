@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Changelog &#8212; sphinx-multiversion 0.2.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,7 +12,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Frequently Asked Questions" href="faq.html" />
@@ -33,11 +35,11 @@
           <div class="body" role="main">
             
   <section id="changelog">
-<span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">¶</a></h1>
 <section id="version-0-2">
-<h2>Version 0.2<a class="headerlink" href="#version-0-2" title="Permalink to this headline">¶</a></h2>
+<h2>Version 0.2<a class="headerlink" href="#version-0-2" title="Permalink to this heading">¶</a></h2>
 <section id="version-0-2-4-2020-08-12">
-<h3>Version 0.2.4 (2020-08-12)<a class="headerlink" href="#version-0-2-4-2020-08-12" title="Permalink to this headline">¶</a></h3>
+<h3>Version 0.2.4 (2020-08-12)<a class="headerlink" href="#version-0-2-4-2020-08-12" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Skip file existence check for the <code class="file docutils literal notranslate"><span class="pre">.</span></code> directory. This fixes an issue if the configuration or source directory is in the local path but reported as missing, because <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span> <span class="pre">-e</span></code> always reports an error in that case. (<a class="reference external" href="https://github.com/Holzhaus/sphinx-multiversion/issues/12">#12</a>)</p></li>
 <li><p>Fix file existence check not working on Windows. (<a class="reference external" href="https://github.com/Holzhaus/sphinx-multiversion/issues/18">#18</a>, <a class="reference external" href="https://github.com/Holzhaus/sphinx-multiversion/issues/19">#19</a>)</p></li>
@@ -49,7 +51,7 @@
 </ul>
 </section>
 <section id="version-0-2-3-2020-05-04">
-<h3>Version 0.2.3 (2020-05-04)<a class="headerlink" href="#version-0-2-3-2020-05-04" title="Permalink to this headline">¶</a></h3>
+<h3>Version 0.2.3 (2020-05-04)<a class="headerlink" href="#version-0-2-3-2020-05-04" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed return codes of main() function and exit with non-zero status if no matching refs were found.</p></li>
 <li><p>Added some logging calls to the git module.</p></li>
@@ -57,35 +59,35 @@
 </ul>
 </section>
 <section id="version-0-2-2-2020-05-01">
-<h3>Version 0.2.2 (2020-05-01)<a class="headerlink" href="#version-0-2-2-2020-05-01" title="Permalink to this headline">¶</a></h3>
+<h3>Version 0.2.2 (2020-05-01)<a class="headerlink" href="#version-0-2-2-2020-05-01" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Added additional checks to determine if a branch or tag contains both the Sphinx source directory and the <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file. If that’s not the case, that branch or tag is skipped automatically and not copied to the temporary directory. (<a class="reference external" href="https://github.com/Holzhaus/sphinx-multiversion/issues/9">#9</a>)</p></li>
 </ul>
 </section>
 <section id="version-0-2-1-2020-04-19">
-<h3>Version 0.2.1 (2020-04-19)<a class="headerlink" href="#version-0-2-1-2020-04-19" title="Permalink to this headline">¶</a></h3>
+<h3>Version 0.2.1 (2020-04-19)<a class="headerlink" href="#version-0-2-1-2020-04-19" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed handling of absolute output paths in <cite>vpathto</cite> and ensure that all generated paths are relative.</p></li>
 </ul>
 </section>
 <section id="version-0-2-0-2020-04-19">
-<h3>Version 0.2.0 (2020-04-19)<a class="headerlink" href="#version-0-2-0-2020-04-19" title="Permalink to this headline">¶</a></h3>
+<h3>Version 0.2.0 (2020-04-19)<a class="headerlink" href="#version-0-2-0-2020-04-19" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Added a way to override config variables using placeholders that expand to each version’s actual value (<a class="reference external" href="https://github.com/Holzhaus/sphinx-multiversion/issues/4">#4</a>, <a class="reference external" href="https://github.com/Holzhaus/sphinx-multiversion/issues/7">#7</a>).</p></li>
 </ul>
 </section>
 </section>
 <section id="version-0-1">
-<h2>Version 0.1<a class="headerlink" href="#version-0-1" title="Permalink to this headline">¶</a></h2>
+<h2>Version 0.1<a class="headerlink" href="#version-0-1" title="Permalink to this heading">¶</a></h2>
 <section id="version-0-1-1-2020-03-12">
-<h3>Version 0.1.1 (2020-03-12)<a class="headerlink" href="#version-0-1-1-2020-03-12" title="Permalink to this headline">¶</a></h3>
+<h3>Version 0.1.1 (2020-03-12)<a class="headerlink" href="#version-0-1-1-2020-03-12" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed version number in documentation</p></li>
 <li><p>Fixed issue that caused the wrong configuration directory being used when the <code class="docutils literal notranslate"><span class="pre">-c</span></code> argument was not specified on the command line</p></li>
 </ul>
 </section>
 <section id="version-0-1-0-2020-03-11">
-<h3>Version 0.1.0 (2020-03-11)<a class="headerlink" href="#version-0-1-0-2020-03-11" title="Permalink to this headline">¶</a></h3>
+<h3>Version 0.1.0 (2020-03-11)<a class="headerlink" href="#version-0-1-0-2020-03-11" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Initial release</p></li>
 </ul>
@@ -173,7 +175,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Branches</h3>
 <ul>
   <li><a href="changelog.html">master</a></li>
@@ -190,7 +192,7 @@
       &copy;2022, Jan Holthuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

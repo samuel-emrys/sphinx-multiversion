@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Frequently Asked Questions &#8212; sphinx-multiversion 0.2.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,7 +12,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Changelog" href="changelog.html" />
@@ -34,15 +36,15 @@
           <div class="body" role="main">
             
   <section id="frequently-asked-questions">
-<span id="faq"></span><h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<span id="faq"></span><h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this heading">¶</a></h1>
 <section id="why-another-tool-for-versioning-sphinx-docs">
-<h2>Why another tool for versioning Sphinx docs?<a class="headerlink" href="#why-another-tool-for-versioning-sphinx-docs" title="Permalink to this headline">¶</a></h2>
+<h2>Why another tool for versioning Sphinx docs?<a class="headerlink" href="#why-another-tool-for-versioning-sphinx-docs" title="Permalink to this heading">¶</a></h2>
 <p>While there are several sphinx extensions out there (e.g.  <a class="reference external" href="https://github.com/sphinx-contrib/sphinxcontrib-versioning">sphinxcontrib-versioning</a>  or <a class="reference external" href="https://github.com/Smile-SA/sphinx-versions">sphinx-versions</a>) none of them seem to work correctly with recent sphinx versions (as of March 2020).
 Their code heavily relies on monkey-patching Sphinx internals at runtime, which is error-prone and makes the code a mess.</p>
 <p>In contrast, the extension part of <code class="docutils literal notranslate"><span class="pre">sphinx-multiversion</span></code> does not do any fancy patching, it just provides some HTML context variables.</p>
 </section>
 <section id="how-does-it-work">
-<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this heading">¶</a></h2>
 <p>Instead of running <cite>sphinx build</cite>, just run <cite>sphinx-multiversion</cite> from the root of your Git repository.
 It reads your Sphinx <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file from the currently checked out Git branch for configuration, then generates a list of versions from local or remote tags and branches.
 This data is written to a JSON file - if you want to have a look what data will be generated, you can use the <code class="docutils literal notranslate"><span class="pre">--dump-metadata</span></code> flag.</p>
@@ -51,14 +53,14 @@ The <code class="file docutils literal notranslate"><span class="pre">conf.py</s
 This also means that theme improvements, template changes, etc. will automatically be applied to old versions without needing to add commits.</p>
 </section>
 <section id="do-i-need-to-make-changes-to-old-branches-or-tags">
-<h2>Do I need to make changes to old branches or tags?<a class="headerlink" href="#do-i-need-to-make-changes-to-old-branches-or-tags" title="Permalink to this headline">¶</a></h2>
+<h2>Do I need to make changes to old branches or tags?<a class="headerlink" href="#do-i-need-to-make-changes-to-old-branches-or-tags" title="Permalink to this heading">¶</a></h2>
 <p>No, you don’t. <code class="docutils literal notranslate"><span class="pre">sphinx-multiversion</span></code> will always use the <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file from your currently checked out branch.</p>
 <p>The downside is that this behaviour restricts the kinds of changes you may do to your configuration, because it needs to retain compatibility with old branches.
 For example, if your <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file hardcodes a path (e.g. for opening a file), but that file does not exist in some older branches that you want to build documentation for, this will cause issues.
 In these cases you will need to add a check if a file actually exists and adapt the path accordingly.</p>
 </section>
 <section id="what-are-the-license-terms-of-sphinx-multiversion">
-<h2>What are the license terms of <code class="docutils literal notranslate"><span class="pre">sphinx-multiversion</span></code>?<a class="headerlink" href="#what-are-the-license-terms-of-sphinx-multiversion" title="Permalink to this headline">¶</a></h2>
+<h2>What are the license terms of <code class="docutils literal notranslate"><span class="pre">sphinx-multiversion</span></code>?<a class="headerlink" href="#what-are-the-license-terms-of-sphinx-multiversion" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">sphinx-multiversion</span></code> is licensed under the terms of the <a class="reference external" href="https://choosealicense.com/licenses/bsd-2-clause/">BSD 2-Clause license</a>.</p>
 </section>
 </section>
@@ -148,7 +150,7 @@ In these cases you will need to add a check if a file actually exists and adapt 
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Branches</h3>
 <ul>
   <li><a href="faq.html">master</a></li>
@@ -165,7 +167,7 @@ In these cases you will need to add a check if a file actually exists and adapt 
       &copy;2022, Jan Holthuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

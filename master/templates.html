@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Templates &#8212; sphinx-multiversion 0.2.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,7 +12,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="HTML Context" href="context.html" />
@@ -34,11 +36,11 @@
           <div class="body" role="main">
             
   <section id="templates">
-<span id="id1"></span><h1>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Templates<a class="headerlink" href="#templates" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">sphinx-multiversion</span></code> does not change the look of your HTML output by default.
 Instead, you can customize the template to cater to your needs.</p>
 <section id="version-listings">
-<h2>Version Listings<a class="headerlink" href="#version-listings" title="Permalink to this headline">¶</a></h2>
+<h2>Version Listings<a class="headerlink" href="#version-listings" title="Permalink to this heading">¶</a></h2>
 <p>To add version listings to your template, you need to add a custom template to your theme.</p>
 <p>You can take one of the snippets below, put it into <code class="file docutils literal notranslate"><span class="pre">_templates/versioning.html</span></code> and add it to your theme’s sidebar:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>templates_path = [
@@ -51,7 +53,7 @@ html_sidebars = [
 </pre></div>
 </div>
 <section id="list-all-branches-tags">
-<h3>List all branches/tags<a class="headerlink" href="#list-all-branches-tags" title="Permalink to this headline">¶</a></h3>
+<h3>List all branches/tags<a class="headerlink" href="#list-all-branches-tags" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% if versions %}
 <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ _(&#39;Versions&#39;) }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -64,7 +66,7 @@ html_sidebars = [
 </div>
 </section>
 <section id="list-branches-and-tags-separately">
-<h3>List branches and tags separately<a class="headerlink" href="#list-branches-and-tags-separately" title="Permalink to this headline">¶</a></h3>
+<h3>List branches and tags separately<a class="headerlink" href="#list-branches-and-tags-separately" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% if versions %}
 <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ _(&#39;Branches&#39;) }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -83,7 +85,7 @@ html_sidebars = [
 </div>
 </section>
 <section id="list-releases-and-development-versions-separately">
-<h3>List releases and development versions separately<a class="headerlink" href="#list-releases-and-development-versions-separately" title="Permalink to this headline">¶</a></h3>
+<h3>List releases and development versions separately<a class="headerlink" href="#list-releases-and-development-versions-separately" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% if versions %}
 <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ _(&#39;Releases&#39;) }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -102,7 +104,7 @@ html_sidebars = [
 </div>
 </section>
 <section id="list-available-downloads">
-<h3>List available downloads<a class="headerlink" href="#list-available-downloads" title="Permalink to this headline">¶</a></h3>
+<h3>List available downloads<a class="headerlink" href="#list-available-downloads" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% if current_version.artefacts %}
 <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ _(&#39;Downloads&#39;) }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -116,7 +118,7 @@ html_sidebars = [
 </section>
 </section>
 <section id="version-banners">
-<h2>Version Banners<a class="headerlink" href="#version-banners" title="Permalink to this headline">¶</a></h2>
+<h2>Version Banners<a class="headerlink" href="#version-banners" title="Permalink to this heading">¶</a></h2>
 <p>You can also add version banners to your theme, for example create a template file page.html in the templates directory:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &quot;!page.html&quot; %}
 {% block body %}
@@ -139,7 +141,7 @@ html_sidebars = [
 </div>
 </section>
 <section id="readthedocs-theme">
-<h2>ReadTheDocs Theme<a class="headerlink" href="#readthedocs-theme" title="Permalink to this headline">¶</a></h2>
+<h2>ReadTheDocs Theme<a class="headerlink" href="#readthedocs-theme" title="Permalink to this heading">¶</a></h2>
 <p>As of version 0.4.3, the <a class="reference external" href="https://pypi.org/project/sphinx-rtd-theme/">Read the Docs theme</a> does not support sidebar widgets.
 So instead of adding a custom template to <code class="docutils literal notranslate"><span class="pre">html_sidebars</span></code>, you need to create a template file named <code class="file docutils literal notranslate"><span class="pre">versions.html</span></code> with the following content:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{%- if current_version %}
@@ -278,7 +280,7 @@ So instead of adding a custom template to <code class="docutils literal notransl
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Branches</h3>
 <ul>
   <li><a href="templates.html">master</a></li>
@@ -295,7 +297,7 @@ So instead of adding a custom template to <code class="docutils literal notransl
       &copy;2022, Jan Holthuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
